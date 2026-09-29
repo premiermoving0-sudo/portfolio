@@ -1,0 +1,4 @@
+const names = ['Amazon', 'iBEX', 'TCS', 'Leopards', 'Sentiments Express'];
+export default function TrustStrip() {
+  return <section className="bg-white border-b border-black/10 py-7 md:py-9"><div className="mx-auto max-w-[1600px] px-5 md:px-10 lg:px-16 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-10"><span className="text-[11px] font-bold uppercase tracking-[.2em] text-[#8a8a8f]">Companies I've worked with</span><div className="flex flex-wrap items-center justify-center gap-x-8 md:gap-x-10 gap-y-3">{names.map(n => <span key={n} className="text-lg md:text-2xl font-black tracking-tight text-[#0A0A0B]/75">{n}</span>)}</div></div></section>;
+}

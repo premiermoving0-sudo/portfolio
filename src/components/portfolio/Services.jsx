@@ -1,0 +1,18 @@
+import { Reveal } from '@/lib/motion';
+import { ArrowUpRight, Headphones, Sparkles, Code2 } from 'lucide-react';
+const services = [
+  { number: '01', label: 'STRATEGIC', title: 'Build a brand that moves.', icon: Sparkles, tags: ['Agency leadership', 'Brand making', 'Digital marketing & ads'], color: '#FF4D00', bg: '#FFF0E9', desc: 'From a first idea to a distinct market presence, I connect positioning, creative direction and campaigns with real business goals.' },
+  { number: '02', label: 'TACTICAL', title: 'Make every interaction count.', icon: Headphones, tags: ['Voice & chat support', 'USA customer experience', 'Quality assurance & coaching'], color: '#2A52BE', bg: '#EBEEF6', desc: 'Human-first support backed by quality standards, clear communication and hands-on experience serving North American customers.' },
+  { number: '03', label: 'TECHNICAL', title: 'Turn ideas into digital.', icon: Code2, tags: ['Website development', 'WordPress', 'Design & digital delivery'], color: '#0A0A0B', bg: '#EDEDED', desc: 'Useful, thoughtful web experiences and visual assets that help businesses show up confidently and work better online.' }
+];
+export default function Services({ onSelect }) {
+  return <section id="services" className="bg-[#F4F4F7] py-24 md:py-36"><div className="mx-auto max-w-[1600px] px-5 md:px-10 lg:px-16">
+    <Reveal><div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 md:mb-16"><div><p className="section-kicker">What I bring to the table</p><h2 className="section-title mt-5">One partner.<br /><span className="text-[#2A52BE]">Many strengths.</span></h2></div><p className="max-w-[350px] text-[#45454B] leading-relaxed">Support, strategy and execution — tailored to what your business actually needs.</p></div></Reveal>
+    <div className="grid md:grid-cols-3 border border-black/15">{services.map((s, i) => <Reveal key={s.number} delay={i * 0.12} className="h-full"><article className="group h-full bg-white border-b md:border-b-0 md:border-r last:border-0 border-black/15 flex flex-col p-7 lg:p-9 min-h-[490px] transition-colors duration-300 hover:-translate-y-1" style={{ '--svc': s.color }} onMouseEnter={e => e.currentTarget.style.backgroundColor = s.bg} onMouseLeave={e => e.currentTarget.style.backgroundColor = '#fff'}>
+      <div className="flex justify-between items-start"><span className="text-xs font-bold tracking-[.2em] text-[#575757]">{s.number} / {s.label}</span><s.icon size={29} strokeWidth={1.4} style={{ color: s.color }} className="transition-transform duration-500 group-hover:rotate-12" /></div>
+      <div className="mt-20 md:mt-24"><h3 className="text-[clamp(28px,2.7vw,45px)] leading-[1.05] tracking-[-.06em] font-black max-w-[310px]">{s.title}</h3><p className="text-sm text-[#45454B] leading-relaxed mt-5 max-w-[340px]">{s.desc}</p><div className="flex flex-wrap gap-2 mt-6">{s.tags.map(tag => <span key={tag} className="text-[10px] font-bold uppercase tracking-[.08em] border border-black/15 rounded-full px-3 py-2">{tag}</span>)}</div></div>
+      <button onClick={() => onSelect(s.label === 'STRATEGIC' ? 'Brand & marketing' : s.label === 'TACTICAL' ? 'Customer support' : 'Website & design')} className="mt-auto pt-10 flex items-center justify-between text-xs font-bold uppercase tracking-[.13em] text-left hover:text-[#2A52BE]">Quick hire <ArrowUpRight size={22} className="transition-transform duration-300 group-hover:translate-x-1.5" /></button>
+    </article></Reveal>)}
+    </div>
+  </div></section>;
+}
